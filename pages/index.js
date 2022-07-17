@@ -7,11 +7,12 @@ export default function Home() {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    const data = await signOut({ redirect: false, callbackUrl: "/some" });
+    const data = await signOut({ redirect: false, callbackUrl: "/" });
     router.push(data.url);
   };
   const handleSignIn = () => {
-    router.push(`auth/signin?callbackUrl=${router.asPath}`);
+    // router.push(`auth/signin?callbackUrl=${router.asPath}`);
+    router.push("auth/signin");
   };
   return (
     <Grid placeItems="center" gridRowGap="1rem">
@@ -24,7 +25,7 @@ export default function Home() {
         <>
           <Heading>
             You are not signed in
-            <Button onClick={handleSignIn}>Sign in</Button>
+            <Button onClick={signIn}>Sign in</Button>
           </Heading>
         </>
       )}
